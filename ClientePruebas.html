@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cliente de almacen 01</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+   		     	var url="http://localhost/webservicePrestamo/productos/";
+   		     	console.log(url);
+       			 $.get(url,function(datos){
+       		 	datos.response.forEach(function(item,index){
+       		 			$("#cuerpo").append("<tr>");
+       		 		$("#cuerpo").append("<td style=\"border:4px solid;padding:4px 4px;\">"+item.id+"</td>");
+       		 		$("#cuerpo").append("<td style=\"border:4px solid;padding:4px 4px;\">"+item.nombre+"</td>");
+       		 		$("#cuerpo").append("<td style=\"border:4px solid;padding:4px 4px;\">"+item.descripcion+"</td>");
+       		 		$("#cuerpo").append("<td style=\"border:4px solid;padding:4px 4px;\">"+item.categoria+"</td>");
+       		 		$("#cuerpo").append("<td style=\"border:4px solid;padding:4px 4px;\">"+item.precio+"</td>");
+       		 		$("#cuerpo").append("<td style=\"border:4px solid;padding:4px 4px;\">"+item.existencia+"</td>");
+					$("#cuerpo").append("</tr><br>");
+       		 	});
+       		 });
+
+   		   $("#buscar").click(function(){
+   		     	console.log($("#data").val());
+   		     	var url="http://ec2-18-216-128-25.us-east-2.compute.amazonaws.com/webservicePrestamo/productos/".concat($("#data").val());
+   		     	console.log(url);
+       			 $.get(url,function(datos){
+       			 	console.log(datos);
+		       		 	$("#cont").html("<p>"+datos.response.nombre+"</p>");
+		       		 	$("#cont").append("<p>"+datos.response.descripcion+"</p>");
+		       		 	$("#cont").append("<p>"+datos.response.categoria+"</p>");
+		       		 	$("#cont").append("<p>"+datos.response.precio+"</p>");
+		       		 	$("#cont").append("<p>"+datos.response.existencia+"</p>");
+       		 });
+         });
+   		     
+   		    $("#ingresa").click(function(){
+   		     	var url="http://ec2-18-216-128-25.us-east-2.compute.amazonaws.com/webservicePrestamo/productos/";
+   		     	var producto = new Object();
+   		     	  producto.id=null;
+   		     	  producto.nombre=$("#nombre").val();
+   		     	  producto.descripcion=$("#descripcion").val();
+   		     	  producto.categoria=$("#categoria").val();
+   		     	  producto.precio=$("#precio").val();
+   		     	  producto.existencia=$("#existencia").val();
+
+   		     	  $.post(url,producto,function(datos,status){
+   		     	  	console.log(status+"el estado"+datos);
+   		     	  	alert('articulo ingresado con exito');
+   		     	  });
+   		     });
+   		    $("#elimina").click(function(){
+   		    	var url="http://ec2-18-216-128-25.us-east-2.compute.amazonaws.com/webservicePrestamo/productos/".concat($("#nombre").val());
+   		    	console.log(url);
+   		    	$.post(url,function(datos,status){
+   		     	  	console.log(status+"el estado"+datos);
+   		     	  	alert('articulo eliminado con exito');
+   		     	  });
+
+   		     }); 
+   		      $("#actualiza").click(function(){
+   		      	alert("entro");
+   		      		var url="http://localhost/webservicePrestamo/producto/";
+   		     	var producto = new Object();
+   		     	  producto.id=null;
+   		     	  producto.nombre=$("#nombre").val();
+   		     	  producto.descripcion=$("#descripcion").val();
+   		     	  producto.categoria=$("#categoria").val();
+   		     	  producto.precio=$("#precio").val();
+   		     	  producto.existencia=$("#existencia").val();
+
+   		     	  $.post(url,producto,function(datos,status){
+   		     	  	console.log(status+"el estado"+datos);
+   		     	  	alert('articulo ingresado con exito');
+   		     	  });
+   		     }); 
+
+});
+	</script>
+</head>
+<body>
+	
+		<label>Buscar</label>
+	      <input type="text" name="data" id="data">
+	      <button type="submit" id="buscar">Buscar</button>
+	      <table id="tabla" border="1px">
+	      	<tr>
+	      		<th>id</th>
+	      		<th>nombre</th>
+	      		<th>descripcion</th>
+	      		<th>categoria</th>
+	      		<th>Precio</th>
+	      		<th>Existencias</th>
+	      	</tr>
+	      	<tbody id="cuerpo">
+	      		
+	      	</tbody>
+	      </table>
+	    <div id="cont">
+	    </div>
+	<br><br><br><br>
+	<div name="Menu">
+			  <label>Nombre</label>
+		      <input type="text" id="nombre">
+		      <label>Descripcion</label>
+		      <input type="text" id="descripcion">
+		      <label>Categoria</label>
+		      <input type="text" id="categoria"><br>
+		      <label>Precio</label>
+		      <input type="text" id="precio">
+		      <label>Existencias</label>
+		      <input type="text" id="existencia"><br>
+
+
+		      <button type="submit" id="ingresa">Ingresar</button>
+		      <button type="submit" id="elimina">Eliminar</button>
+		      <button type="submit" id="actualiza">Actualizar</button>
+		      <div id="areaUdate"></div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cliente de almacen 01</title>
+  <script src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style2.css">
+	<script  type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<div>
+   <h1><span class="blue">&lt;</span>Tabla<span class="blue">&gt;</span> <span class="yellow">Productos</pan></h1>
+	  <div style="margin-left: 124px;">
+        <h3 class="text-success">Buscar</h3>
+		   <div class="col-sm-10">
+	      <input type="text" name="green" id="data" placeholder="Buscar">
+	     </div>
+
+	     <div class="btn-default" role="group" aria-label="...">
+			<button type="submit" class="btn btn-success" id="buscar">Buscar</button>
+	     </div>
+    </div>
+	   
+	  
+
+	      <table class="container">
+	      	<thead>
+            <tr >
+            <th style="border:2px solid;padding:4px 4px;">id</th>
+            <th style="border:2px solid;padding:4px 4px;">nombre</th>
+            <th style="border:2px solid;padding:4px 4px;">descripcion</th>
+            <th style="border:2px solid;padding:4px 4px;">categoria</th>
+            <th style="border:2px solid;padding:4px 4px;">Precio</th>
+            <th style="border:2px solid;padding:4px 4px;">Existencias</th>
+          </tr>
+          </thead>
+          
+	      	<tbody id="cuerpo">	      		
+	      	</tbody>
+	      </table>
+	    <div id="cont" style="margin-left:250px;margin-right:590px; font-size: 18px;border: dashed 2px;"  class="text-success">
+	    </div>
+	<br><br>
+	<div name="Menu"style="margin-left:100px;">
+			<div style="display: inline-block;width: 240px;margin: 10px;">
+			  <h3 class="text-success">Nombre</h3>
+		      <input type="text" id="nombre" placeholder="Nombre">
+		    </div>
+		    <div style="display: inline-block;width: 240px;margin: 10px;"> 
+		      <h3 class="text-success">Descripcion</h3>
+		      <input type="text" id="descripcion" placeholder="Descripcion">
+		     </div>
+		     <div style="display: inline-block;width: 240px;margin: 10px;"> 
+		      <h3 class="text-success">Categoria</h3>
+		      <input type="text" id="categoria" placeholder="Categoria"><br>
+		    </div>
+		    <div style="display: inline-block;width: 240px;margin: 10px;"> 
+		      <h3 class="text-success">Precio</h3>
+		      <input type="text" id="precio" placeholder="Precio">
+		    </div>
+		    <div style="display: inline-block;width: 240px;margin: 10px;"> 
+		      <h3 class="text-success">Existencias</h3>
+		      <input type="text" id="existencia" placeholder="Existencias"><br>
+		    </div>
+
+
+			<div class="btn-default" role="group" aria-label="...">
+
+					<button type="submit" class="btn btn-success" id="ingresa">Ingresa</button>
+					<button type="submit" class="btn btn-success" id="elimina">Eliminar</button>
+					<button type="submit" class="btn btn-success" id="actualiza">Actualizar</button>
+	     	</div>
+		      <div id="areaUdate"></div>
+		
+	</div>
+</div>
+</body>
+</html>
